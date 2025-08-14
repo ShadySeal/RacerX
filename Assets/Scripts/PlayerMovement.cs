@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -24,11 +25,18 @@ public class PlayerMovement : MonoBehaviour
         currentVelocity = Vector3.Lerp(currentVelocity, desiredVelocity, deceleration * Time.deltaTime);
         Vector3 newPos = transform.position + currentVelocity * Time.deltaTime;
 
+        Vector3 currentPosition = transform.position;
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit))
         {
             newPos.y = (hit.point + Vector3.up * distanceFromGround).y;
             deskUp = hit.normal;
+
+            currentPosition = transform.position;
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         transform.position = newPos;

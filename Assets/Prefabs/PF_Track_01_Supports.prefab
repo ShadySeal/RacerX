@@ -48,9 +48,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: fb8f39736499b0e49952c8d0cfcd816f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: bfc18831bd291ec4a913007b177d005a, type: 2}
     - target: {fileID: 919132149155446097, guid: fb8f39736499b0e49952c8d0cfcd816f, type: 3}
       propertyPath: m_Name
-      value: GEO-Track_01_Supports_v002
+      value: PF_Track_01_Supports
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
