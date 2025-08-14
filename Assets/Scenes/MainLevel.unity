@@ -1406,12 +1406,20 @@ PrefabInstance:
       value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 6547096105348541868, guid: 3f2e481c58177cc499c4adc1ea79651e, type: 3}
+      propertyPath: turnSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6547096105348541868, guid: 3f2e481c58177cc499c4adc1ea79651e, type: 3}
       propertyPath: acceleration
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6547096105348541868, guid: 3f2e481c58177cc499c4adc1ea79651e, type: 3}
       propertyPath: maxSteerAngle
       value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6547096105348541868, guid: 3f2e481c58177cc499c4adc1ea79651e, type: 3}
+      propertyPath: turnAcceleration
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

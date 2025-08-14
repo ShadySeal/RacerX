@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float maxSpeed = 10f;
     [SerializeField] private float acceleration = 5f;
+    [SerializeField] private float turnAcceleration = 5f;
     [SerializeField] private float turnSpeed = 50f;
     [SerializeField] private float distanceFromGround = 2f;
     [SerializeField] private float angleSpeed = 15f;
@@ -15,24 +16,22 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 deskUp;
     private Vector3 currentVelocity;
 
+    private float currentTurnSpeed = 0f;
+
     private void Update()
     {
         verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
 
+        // --- Forward/backward movement ---
         float targetSpeed = verticalInput * maxSpeed;
         float speedChange = acceleration * Time.deltaTime;
-
-        // Update scalar speed instead of a velocity vector
         float currentSpeed = currentVelocity.magnitude;
         currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, speedChange);
-
-        // Move in the direction the vehicle is facing
         currentVelocity = transform.forward * currentSpeed;
 
         Vector3 newPos = transform.position + currentVelocity * Time.deltaTime;
 
-        // Ground check
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit))
         {
             newPos.y = (hit.point + Vector3.up * distanceFromGround).y;
@@ -43,19 +42,16 @@ public class PlayerMovement : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        // Turning
-        if (horizontalInput != 0f)
-        {
-            float turn = horizontalInput * turnSpeed * Time.deltaTime;
-            transform.Rotate(Vector3.up * turn);
-        }
+        float targetTurnSpeed = horizontalInput * turnSpeed;
+        currentTurnSpeed = Mathf.Lerp(currentTurnSpeed, targetTurnSpeed, turnAcceleration * Time.deltaTime);
+        transform.Rotate(Vector3.up * currentTurnSpeed * Time.deltaTime);
 
-        // Align with slope
         Vector3 forward = transform.forward;
         Quaternion slopeAlignedRotation = Quaternion.LookRotation(forward, deskUp);
         transform.rotation = Quaternion.Slerp(transform.rotation, slopeAlignedRotation, angleSpeed * Time.deltaTime);
 
         transform.position = newPos;
     }
+
 
 }
