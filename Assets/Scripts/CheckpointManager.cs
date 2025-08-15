@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class CheckpointManager : MonoBehaviour
 {
     [SerializeField] private Checkpoint[] checkpoints;
+    public int lapCount = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,7 +27,12 @@ public class CheckpointManager : MonoBehaviour
 
         if (allEntered)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            lapCount++;
+            foreach (var point in checkpoints)
+            {
+                point.hasEntered = false;
+                allEntered = false;
+            }
         }
     }
 }

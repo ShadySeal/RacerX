@@ -18,6 +18,13 @@ public class PlayerMovement : MonoBehaviour
 
     private float currentTurnSpeed = 0f;
 
+    private AudioSource idleAudio;
+
+    private void Start()
+    {
+        idleAudio = GetComponent<AudioSource>();
+    }
+
     private void Update()
     {
         verticalInput = Input.GetAxis("Vertical");
@@ -50,7 +57,8 @@ public class PlayerMovement : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, slopeAlignedRotation, angleSpeed * Time.deltaTime);
 
         transform.position = newPos;
+
+        idleAudio.pitch = Mathf.Lerp(1f, 3f, currentSpeed / maxSpeed);
+        Camera.main.fieldOfView = Mathf.Lerp(60f, 80f, currentSpeed / maxSpeed);
     }
-
-
 }
