@@ -23,7 +23,6 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
 
-        // --- Forward/backward movement ---
         float targetSpeed = verticalInput * maxSpeed;
         float speedChange = acceleration * Time.deltaTime;
         float currentSpeed = currentVelocity.magnitude;
