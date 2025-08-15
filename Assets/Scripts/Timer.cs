@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    private TextMeshProUGUI timeText;
+    public TextMeshProUGUI timeText;
 
     [SerializeField] private float timeElapsed = 0f;
     public bool timerIsRunning = false;
@@ -11,7 +11,7 @@ public class Timer : MonoBehaviour
     private void Start()
     {
         timeText = GetComponent<TextMeshProUGUI>();
-        timerIsRunning = true; // Optional: start immediately
+        timerIsRunning = true;
     }
 
     private void Update()
