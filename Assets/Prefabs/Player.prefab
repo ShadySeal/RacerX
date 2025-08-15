@@ -231,11 +231,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05cbdfed79b00ab42906898bc9a257a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 60
-  turnSpeed: 90
+  maxSpeed: 80
+  acceleration: 1
+  turnAcceleration: 5
+  turnSpeed: 100
   distanceFromGround: 2
   angleSpeed: 4
-  deceleration: 0.5
 --- !u!1 &5038816655494739030 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5192056242867577703, guid: 5bb773bf0b101754aaaa004634fc8775, type: 3}
